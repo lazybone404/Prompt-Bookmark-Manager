@@ -70,6 +70,29 @@ promfinder/
 └── package.json
 ```
 
+## 安装
+
+### 方式一：下载 Release（推荐）
+
+1. 前往 [Releases](https://github.com/lazybone404/Prompt-Bookmark-Manager/releases) 页面
+2. 下载最新版 `promfinder-vX.X.X.zip`
+3. 将 zip 解压到一个固定的文件夹（不要删，删了扩展就没了）
+4. 打开 Chrome，地址栏输入 `chrome://extensions`
+5. 开启右上角 **"开发者模式"**
+6. 点击 **"加载已解压的扩展程序"**
+7. 选择第 3 步解压出来的文件夹
+
+### 方式二：从源码构建
+
+```bash
+git clone https://github.com/lazybone404/Prompt-Bookmark-Manager.git
+cd Prompt-Bookmark-Manager
+npm install
+npm run build
+# → dist/ 就是可加载的扩展目录
+# 然后在 chrome://extensions 中加载 dist/ 即可
+```
+
 ## 开发
 
 ```bash
@@ -81,14 +104,6 @@ npm run dev
 
 # 生产构建
 npm run build
-
-# 输出目录：dist/
-
-# 在 Chrome 中加载
-# 1. 打开 chrome://extensions
-# 2. 开启 "开发者模式"
-# 3. 点击 "加载已解压的扩展程序"
-# 4. 选择 dist/ 目录
 ```
 
 ## 使用方式
