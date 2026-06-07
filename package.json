@@ -1,0 +1,18 @@
+{
+  "name": "promfinder",
+  "version": "1.0.0",
+  "description": "Prompt Bookmark Manager — 帮助 AI 用户保存、查找、收藏和快速复制常用 Prompt 的浏览器扩展",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}

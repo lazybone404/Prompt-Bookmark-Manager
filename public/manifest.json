@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt 收藏夹",
+  "version": "1.0.0",
+  "description": "保存、查找、收藏并快速复制常用 Prompt 的浏览器扩展",
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "*://chatgpt.com/*",
+    "*://chat.openai.com/*",
+    "*://claude.ai/*",
+    "*://chat.deepseek.com/*",
+    "*://kimi.moonshot.cn/*",
+    "*://tongyi.aliyun.com/*",
+    "*://yiyan.baidu.com/*",
+    "*://xinghuo.xfyun.cn/*",
+    "*://gemini.google.com/*",
+    "*://copilot.microsoft.com/*",
+    "*://poe.com/*",
+    "*://chat.mistral.ai/*",
+    "*://huggingface.co/chat/*",
+    "*://meta.ai/*"
+  ],
+  "content_scripts": [{
+    "matches": [
+      "*://chatgpt.com/*",
+      "*://chat.openai.com/*",
+      "*://claude.ai/*",
+      "*://chat.deepseek.com/*",
+      "*://kimi.moonshot.cn/*",
+      "*://tongyi.aliyun.com/*",
+      "*://yiyan.baidu.com/*",
+      "*://xinghuo.xfyun.cn/*",
+      "*://gemini.google.com/*",
+      "*://copilot.microsoft.com/*",
+      "*://poe.com/*",
+      "*://chat.mistral.ai/*",
+      "*://huggingface.co/chat/*",
+      "*://meta.ai/*"
+    ],
+    "js": ["float-ball.js"],
+    "run_at": "document_idle"
+  }],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Prompt 收藏夹",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_page": "manager.html",
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  }
+}

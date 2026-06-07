@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.claude/
+CLAUDE.md
+预设/

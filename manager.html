@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt 收藏夹 — 管理</title>
+  <link rel="stylesheet" href="./src/styles/tokens.css">
+  <link rel="stylesheet" href="./src/manager/manager.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 侧边栏 -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h2>📁 分类管理</h2>
+        <button id="add-category-btn" class="icon-btn" title="新建分类">＋</button>
+      </div>
+      <category-tree id="sidebar-category-tree" editable="true"></category-tree>
+      <div class="sidebar-actions">
+        <button id="import-btn" class="action-btn">📥 导入</button>
+        <button id="export-btn" class="action-btn">📤 导出</button>
+        <button id="float-ball-settings-btn" class="action-btn">🟢 悬浮球设置</button>
+      </div>
+      <div id="storage-info" class="storage-info"></div>
+    </aside>
+
+    <!-- 主内容 -->
+    <main id="main-content">
+      <!-- 工具栏 -->
+      <div id="toolbar">
+        <search-bar id="manager-search" placeholder="🔍 搜索 Prompt..."></search-bar>
+        <div class="toolbar-actions">
+          <select id="sort-select" class="sort-select">
+            <option value="updatedAt">最近更新</option>
+            <option value="useCount">使用次数</option>
+            <option value="title">标题 A-Z</option>
+            <option value="createdAt">创建时间</option>
+          </select>
+          <button id="new-prompt-btn" class="primary-btn">＋ 新建 Prompt</button>
+        </div>
+      </div>
+
+      <!-- Prompt 列表 -->
+      <div id="prompt-list-container">
+        <div id="prompt-list"></div>
+        <div id="empty-state" class="empty-state hidden">
+          <div class="empty-icon">📭</div>
+          <div class="empty-title">暂无 Prompt</div>
+          <div class="empty-desc">点击"新建 Prompt"开始创建</div>
+        </div>
+      </div>
+
+      <!-- 编辑面板 -->
+      <prompt-editor id="manager-editor" class="hidden"></prompt-editor>
+    </main>
+  </div>
+
+  <!-- 导入对话框 -->
+  <import-dialog id="import-dialog" class="hidden"></import-dialog>
+
+  <!-- 导出对话框 -->
+  <export-dialog id="export-dialog" class="hidden"></export-dialog>
+
+  <!-- 悬浮球设置面板 -->
+  <div id="float-ball-settings-panel" class="settings-panel hidden">
+    <div class="settings-overlay"></div>
+    <div class="settings-dialog">
+      <div class="settings-header">
+        <h3>🟢 悬浮球设置</h3>
+        <button class="settings-close-btn" id="float-ball-settings-close">✕</button>
+      </div>
+      <div class="settings-body">
+        <label class="settings-toggle">
+          <input type="checkbox" id="float-ball-enabled">
+          <span>启用悬浮球</span>
+        </label>
+        <div class="settings-section">
+          <div class="settings-section-title">显示网站白名单</div>
+          <div class="whitelist-items" id="whitelist-items"></div>
+          <div class="whitelist-add">
+            <input type="text" id="whitelist-add-input" placeholder="例如: example.com">
+            <button id="whitelist-add-btn" class="primary-btn small">添加</button>
+          </div>
+        </div>
+        <div class="settings-section">
+          <button id="reset-position-btn" class="text-btn">🔄 重置悬浮球位置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分类编辑对话框 -->
+  <div id="category-dialog" class="modal-overlay hidden">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <span id="cat-dialog-title">新建分类</span>
+        <button class="modal-close-btn" id="cat-dialog-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">名称</label>
+          <input type="text" id="cat-name-input" class="form-input" placeholder="分类名称" maxlength="50">
+        </div>
+        <div class="form-group">
+          <label class="form-label">父分类（可选）</label>
+          <select id="cat-parent-select" class="form-select">
+            <option value="">无（顶级分类）</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cat-dialog-cancel">取消</button>
+        <button class="btn btn-primary" id="cat-dialog-save">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 确认对话框 -->
+  <confirm-dialog id="confirm-dialog"></confirm-dialog>
+
+  <!-- Toast -->
+  <toast-message></toast-message>
+
+  <script type="module" src="./src/manager/manager.js"></script>
+</body>
+</html>
